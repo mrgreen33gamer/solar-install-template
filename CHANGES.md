@@ -1,4 +1,4 @@
-# Arctic Air HVAC — UI Changes Package
+# SunPeak Solar — UI Changes Package
 
 ## How to apply
 
