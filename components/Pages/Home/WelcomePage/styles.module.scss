@@ -322,6 +322,72 @@
   box-shadow: 0 0 6px rgba($orange, 0.7);
 }
 
+.rBadge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 3;
+  font-family: $textFont;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: $obsidian;
+  background: $orange;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba($orange, 0.35);
+}
+
+.layerLegend {
+  position: absolute;
+  bottom: 2rem;
+  right: 0.65rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: $textFont;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($white, 0.55);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  i {
+    display: inline-block;
+    width: 14px;
+    height: 4px;
+    border-radius: 1px;
+  }
+}
+
+.legBatt {
+  background: $orange;
+  box-shadow: 0 0 6px rgba($orange, 0.5);
+}
+
+.legFoam {
+  background: rgba($white, 0.55);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba($orange, 0.5) 2px,
+    rgba($orange, 0.5) 3px
+  );
+}
+
+.legAir {
+  background: transparent;
+  border: 1px solid rgba($white, 0.45);
+}
+
 // Global keyframe referenced by inline style in Component (module-scoped name
 // is not available to element.style.animation). Use :global so the name is
 // stable across CSS modules.
@@ -388,3 +454,27 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — solar-install-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: none !important;
+    background-size: auto !important;
+    opacity: 0.93 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 90% 20%, rgba($orange, 0.099), transparent 70%), radial-gradient(ellipse 40% 50% at 92% 93%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */

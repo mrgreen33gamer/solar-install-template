@@ -173,3 +173,45 @@
   .sliderWrap { aspect-ratio: 4 / 3; }
   .handlePill { width: 34px; height: 34px; font-size: 0.8rem; }
 }
+
+/* === BEFORE/AFTER SLIDER UNIQUENESS — solar-install-template === */
+.card {
+  border-radius: 12px !important;
+}
+
+.sliderWrap {
+  aspect-ratio: 16 / 10 !important;
+  border-radius: 0 0 12px 12px !important;
+}
+
+.handle,
+.divider,
+.sliderHandle {
+  width: 4px !important;
+  background: $green !important;
+  box-shadow: 0 0 12px rgba(0,0,0,0.35) !important;
+}
+
+.handleKnob,
+.knob,
+.sliderKnob {
+  border-color: $green !important;
+  background: $obsidian !important;
+  border-radius: 4px !important;
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+}
+
+.resultBadge {
+  border-radius: 4px !important;
+}
+
+.beforeLabel, .afterLabel, .label {
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, rgba($obsidian, 0.9), transparent) !important;
+  border: none !important;
+  padding-left: 0.75rem !important;
+}
+/* end before/after uniqueness */
