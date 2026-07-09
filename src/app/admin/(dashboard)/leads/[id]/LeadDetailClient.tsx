@@ -39,7 +39,7 @@ export default function LeadDetailClient({
         body:    JSON.stringify(fields),
       });
       setSaved(true);
-      setTimeout(() => setSaved(false), 2500);
+      setTimeout(() => setSaved(false), 1200);
     } catch { /* non-critical */ }
     setSaving(false);
   };

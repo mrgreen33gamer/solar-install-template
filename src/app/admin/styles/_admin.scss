@@ -7,8 +7,8 @@
 @use 'sass:color';
 
 // ── Brand tokens (mirrors globalVariables.scss) ───────────────────────────
-$orange:      #f97316;
-$lightorange: #fb923c;
+$orange:      #eab308;
+$lightorange: #facc15;
 $darkorange:  #643d26;
 $obsidian:   #130e0a;
 $blue:       #286a99;
@@ -16,7 +16,7 @@ $white:      #ffffff;
 
 // ── Admin dark surface palette ────────────────────────────────────────────
 $bg:         #0f0c0a;   // page background
-$surface:    #181411;   // card / panel background
+$surface:    #181411;   // card / door system background
 $surface2:   #1e1a16;   // elevated surface (hover, active)
 $border:     rgba(255, 255, 255, 0.07);
 $border2:    rgba(255, 255, 255, 0.13);

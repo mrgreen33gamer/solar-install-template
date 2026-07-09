@@ -1,13 +1,4 @@
-// Arctic Air HVAC — Homepage
-// Phase 2: Reshuffled component order + fresh content
-// Original order: WelcomePage → TrustBar → ServiceCards → WhatToExpect → WhyChooseUs
-//                 → ProcessTimeline → ImpactMetrics → Testimonials → GuaranteeSection
-//                 → LocalServiceAreas → FAQ → CTABanner → BlogPreview → Form
-//
-// New order:      WelcomePage → TrustBar → ImpactMetrics → ServiceCards
-//                 → WhyChooseUs → CTABanner (mid) → ProcessTimeline → Testimonials
-//                 → GuaranteeSection → LocalServiceAreas → WhatToExpect → FAQ
-//                 → BlogPreview → Form
+// SunPeak Solar — Homepage
 "use client";
 
 import styles from "./page.module.scss";
@@ -28,198 +19,174 @@ import FAQ                from "#/PageComponents/FAQ/FAQ";
 import BlogPreviewGrid    from "#/PageComponents/BlogPreviewGrid/BlogPreviewGrid";
 
 import {
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind,
-  faTrophy, faChartLine, faClock,
-  faBolt, faShieldHalved, faUsers,
+  faSolarPanel, faIndustry, faBatteryFull, faCarBattery, faChartLine, faTools,
+  faTrophy, faClock,
+  faShieldHalved, faUsers,
   faHeadset, faSearch, faFileContract, faCheckCircle,
-  faFileAlt, faRotateLeft, faLock, faStar,
+  faStar, faClipboardCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import Variant4 from "#/PageComponents/ContactForms/Variant4/Form";
 
 export default function HomePage() {
 
-  // ── Services ────────────────────────────────────────────────────────────────
   const services = [
     {
-      icon: faFan,
-      title: "AC Repair",
-      body: "Same-day diagnosis on all makes and models. We stock common parts on every truck — most repairs completed in one visit.",
-      link: "/services/ac-repair",
+      icon: faSolarPanel,
+      title: "Residential Solar",
+      body: "Custom rooftop and ground-mount systems designed for Central Texas sun, roof type, and your monthly usage — from design through interconnection.",
+      link: "/services/residential-solar",
     },
     {
-      icon: faFire,
-      title: "Heating & Furnace",
-      body: "Gas furnaces, heat pumps, dual-fuel systems — repaired fast with a full CO safety inspection on every heating call.",
-      link: "/services/heating",
+      icon: faIndustry,
+      title: "Commercial Solar",
+      body: "Warehouse, retail, and office arrays that cut demand charges and lock in long-term energy costs for your business.",
+      link: "/services/commercial-solar",
     },
     {
-      icon: faWrench,
-      title: "New Installation",
-      body: "Right-sized system selection, clean installation, full commissioning. We never upsell equipment you don't need.",
-      link: "/services/installation",
+      icon: faBatteryFull,
+      title: "Battery Storage",
+      body: "Home and light-commercial batteries sized for outages, self-consumption, and evening rate savings — with app monitoring included.",
+      link: "/services/battery-storage",
     },
     {
-      icon: faFilter,
-      title: "Duct Cleaning",
-      body: "Full system clean and sanitize — removes years of buildup, improves airflow, and makes a real difference for allergy sufferers.",
-      link: "/services/duct-cleaning",
+      icon: faCarBattery,
+      title: "EV Charger + Solar",
+      body: "Level 2 chargers integrated with your solar design so you drive on sunshine, not peak utility rates.",
+      link: "/services/ev-charger-solar",
     },
     {
-      icon: faThermometerHalf,
-      title: "Maintenance Plans",
-      body: "Two tune-ups per year, 15% off repairs, priority emergency scheduling. Month-to-month — cancel anytime.",
-      link: "/services/maintenance",
+      icon: faChartLine,
+      title: "System Monitoring",
+      body: "Production tracking, proactive alerts, and performance reports so you know your array is earning every day.",
+      link: "/services/system-monitoring",
     },
     {
-      icon: faWind,
-      title: "Indoor Air Quality",
-      body: "UV purifiers, whole-home humidifiers, HEPA-grade filtration. Breathe cleaner air in every room of your home.",
-      link: "/services/indoor-air-quality",
+      icon: faTools,
+      title: "Solar Maintenance",
+      body: "Panel cleaning, inverter checks, and repair for systems we installed — or systems orphaned by another company.",
+      link: "/services/solar-maintenance",
     },
   ];
 
-  // ── Impact metrics (moved up — builds trust before selling) ─────────────────
   const metrics = [
-    { icon: faTrophy,    value: 2400, label: "Homes and businesses served in Central Texas", suffix: "+", duration: 3 },
-    { icon: faClock,     value: 15,   label: "Years of local HVAC experience",               suffix: "+", duration: 2 },
-    { icon: faChartLine, value: 98,   label: "Customer satisfaction rating",                 suffix: "%", duration: 2 },
+    { icon: faTrophy,    value: 1200, label: "Systems installed across Central Texas", suffix: "+", duration: 3 },
+    { icon: faClock,     value: 10,   label: "Years of local solar experience",          suffix: "+", duration: 2 },
+    { icon: faChartLine, value: 98,   label: "Customer satisfaction rating",             suffix: "%", duration: 2 },
   ];
 
-  // ── Why Choose Us (3 differentiators) ───────────────────────────────────────
   const whyFeatures = [
     {
-      icon: faBolt,
-      title: "Emergency Service — Any Hour",
-      description: "AC out at 11pm on a Saturday in July? We answer. Emergency dispatch is available 7 days a week, evenings included. Central Texas heat doesn't wait, and neither do we.",
+      icon: faClipboardCheck,
+      title: "Transparent Design Proposals",
+      description: "You get a clear production estimate, equipment list, and firm install price before you commit. No bait-and-switch pricing.",
     },
     {
       icon: faShieldHalved,
-      title: "NATE-Certified, TDLR-Licensed",
-      description: "Every technician on our crew holds NATE certification and a valid Texas TDLR license. No unlicensed subs, no shortcuts. Your home is protected from the first call to the final invoice.",
+      title: "NABCEP-Aligned Installers",
+      description: "Every crew follows industry best practices. Bonded, insured, and accountable — no fly-by-night roof work.",
     },
     {
       icon: faUsers,
-      title: "Locally Owned Since 2010",
-      description: "We're not a franchise. Arctic Air was founded in Waco by Mike Hawkins, a Waco native with 20+ years in the trade. Every decision is made locally, and every call is answered by someone who lives here.",
+      title: "Locally Owned Since 2016",
+      description: "We're not a door-to-door sales franchise. SunPeak Solar was founded in Waco by Avery Quinn. Decisions stay local.",
     },
   ];
 
-  // ── How it works (process) ───────────────────────────────────────────────────
   const processSteps = [
     {
       number: 1,
       title: "Call or Book Online",
-      description: "Phone, text, or the form below — your choice. We'll confirm a same-day or next-day appointment that fits your schedule.",
+      description: "Phone, text, or the form below — your choice. We'll schedule a free design consult that fits your calendar.",
       icon: faHeadset,
     },
     {
       number: 2,
-      title: "Tech Arrives On Time",
-      description: "Uniformed, background-checked tech shows up in the window we promised. Full system diagnosis — explained in plain English, not HVAC jargon.",
+      title: "Site Survey & Design",
+      description: "We assess roof, shade, and usage, then present a system design with expected production — in plain English.",
       icon: faSearch,
     },
     {
       number: 3,
-      title: "You Get a Flat-Rate Quote",
-      description: "Written price before we touch anything. You decide — zero pressure to proceed. The quote covers parts and labor, and it never changes mid-job.",
+      title: "Proposal You Can Trust",
+      description: "Written scope, equipment brands, warranties, and price. You decide — zero high-pressure tactics.",
       icon: faFileContract,
     },
     {
       number: 4,
-      title: "Done Right, Warranted",
-      description: "Quality parts, clean worksite, 1-year parts and labor warranty on every repair. We leave when you're satisfied — not when we feel like it.",
+      title: "Install, Inspect, Activate",
+      description: "Permits, install, utility interconnection, and monitoring setup. Backed by 25-Year Panel Performance Support + 10-Year Workmanship.",
       icon: faCheckCircle,
     },
   ];
 
-  // ── What to expect (moved lower — reinforces process detail after trust built) ─
   const expectations = [
     {
       icon: faSearch,
-      title: "Honest System Assessment",
-      description: "We diagnose what's actually wrong — not what's most profitable to fix. You see the findings before we recommend anything.",
+      title: "Honest System Sizing",
+      description: "We design for your actual usage and roof — not the biggest package on the price sheet.",
     },
     {
-      icon: faWrench,
-      title: "Clean, Respectful Service",
-      description: "Shoe covers on, work area protected, home left exactly as we found it. Every single visit.",
+      icon: faTools,
+      title: "Clean, Respectful Work",
+      description: "Roof protection, tidy wiring, and a clean jobsite. Your home left the way we found it.",
     },
     {
       icon: faCheckCircle,
-      title: "Upfront Flat-Rate Price",
-      description: "Written quote before any work starts. The number doesn't change when the job runs long — that's our problem, not yours.",
+      title: "Upfront Written Pricing",
+      description: "Proposal before install. The number doesn't jump when the job runs long — that's our problem, not yours.",
     },
     {
       icon: faStar,
-      title: "Manufacturer-Quality Parts",
-      description: "We use OEM-grade parts on every repair, backed by the full 1-year warranty. No gray-market components, no shortcuts.",
+      title: "Quality Gear & Warranties",
+      description: "Tier-1 panels and proven inverters with manufacturer warranties plus our workmanship coverage.",
     },
   ];
 
-  // ── Service areas ────────────────────────────────────────────────────────────
   const localAreas = [
-    { town: "Waco",         benefit: "Home base — fastest dispatch and most available techs in the city.", badge: "Home Base" },
-    { town: "Hewitt",       benefit: "Full residential and commercial coverage. On our regular route.",     badge: "" },
-    { town: "Woodway",      benefit: "Same-day availability for Woodway homes and businesses.",             badge: "" },
-    { town: "Robinson",     benefit: "Regular service area — quick turnaround guaranteed.",                 badge: "" },
-    { town: "China Spring", benefit: "Rural coverage, no trip charge for most China Spring addresses.",     badge: "" },
-    { town: "Killeen",      benefit: "Full coverage for Killeen and Fort Cavazos area customers.",          badge: "" },
+    { town: "Waco",         benefit: "Home base — fastest design and install scheduling in the city.", badge: "Home Base" },
+    { town: "Hewitt",       benefit: "Full residential and light commercial coverage. On our regular route.", badge: "" },
+    { town: "Woodway",      benefit: "Regular availability for Woodway homes and businesses.",               badge: "" },
+    { town: "Temple",       benefit: "Regular service area — reliable project turnaround.",                  badge: "" },
+    { town: "China Spring", benefit: "Rural coverage for ranches and acreage properties.",                   badge: "" },
+    { town: "Killeen",      benefit: "Full coverage for Killeen and Fort Cavazos area customers.",           badge: "" },
   ];
 
-  // ── FAQ ──────────────────────────────────────────────────────────────────────
   const faq = [
     {
-      question: "How much does AC repair cost in Waco?",
-      answer: "Most repairs run $150–$650 depending on the issue. Capacitors and contactors are typically $150–$250. Refrigerant recharges run $250–$500. We always provide a flat-rate written quote before starting — the diagnostic fee is waived when you proceed.",
+      question: "How much does a residential solar system cost in Waco?",
+      answer: "Most home systems fall in a range based on size, roof complexity, and equipment. We provide a free design consult and a written proposal so you see production estimates and pricing before you commit.",
     },
     {
-      question: "Do you offer emergency HVAC service?",
-      answer: "Yes — 7 days a week including evenings and weekends. In Central Texas heat, a broken AC is a genuine emergency. Call us anytime at (254) 900-1234.",
+      question: "How long does installation take?",
+      answer: "Typical residential installs take 1–3 days on-site after permits. Full timeline from signed proposal to utility permission-to-operate often runs a few weeks depending on utility and city inspections.",
     },
     {
-      question: "How quickly can you come out?",
-      answer: "Same-day service is available most days. Emergency calls are dispatched within 1–2 hours. We'll give you an honest ETA when you call — not a 4-hour window.",
+      question: "Do you handle permits and utility interconnection?",
+      answer: "Yes. SunPeak Solar manages design, permits, interconnection paperwork, and inspection coordination so you are not stuck navigating the process alone.",
     },
     {
-      question: "What brands do you service?",
-      answer: "All major brands — Carrier, Trane, Lennox, Rheem, Goodman, York, Daikin, and more. We install Carrier and Trane as our preferred brands for new systems.",
+      question: "What solar services do you offer?",
+      answer: "Residential solar, commercial solar, battery storage, EV charger + solar, system monitoring, and solar maintenance.",
     },
     {
-      question: "Are you licensed and insured in Texas?",
-      answer: "Yes — fully licensed by the Texas Department of Licensing and Regulation (TDLR), bonded, and insured. All technicians are NATE-certified. License number available on request.",
+      question: "Are you bonded and insured?",
+      answer: "Yes — SunPeak Solar is bonded and insured with NABCEP-aligned installers. Credentials available on request.",
     },
     {
-      question: "Do you offer financing for new systems?",
-      answer: "Yes — flexible financing with approved credit, including 0% interest options for qualifying homeowners. Ask us when you get your quote.",
+      question: "What warranties do you offer?",
+      answer: "25-Year Panel Performance Support plus a 10-Year Workmanship warranty covering labor and installation defects, alongside manufacturer equipment warranties.",
     },
-  ];
-
-  // ── TrustBar badges (HVAC-specific) ─────────────────────────────────────────
-  const trustBadges = [
-    { icon: faStar,          label: "5.0 Google Rating",    sub: "200+ Reviews" },
-    { icon: faShieldHalved,  label: "TDLR Licensed",        sub: "Texas Certified" },
-    { icon: faTrophy,        label: "NATE Certified",       sub: "All Technicians" },
-    { icon: faClock,         label: "Same-Day Service",     sub: "7 Days a Week" },
-    { icon: faBolt,          label: "Emergency Available",  sub: "Evenings & Weekends" },
-    { icon: faFileAlt,       label: "Flat-Rate Pricing",    sub: "No Surprises" },
-    { icon: faRotateLeft,    label: "1-Year Warranty",      sub: "Parts & Labor" },
-    { icon: faLock,          label: "No Contracts",         sub: "Month-to-Month" },
-    { icon: faWrench,        label: "All Brands Serviced",  sub: "Any Make & Model" },
-    { icon: faUsers,         label: "Locally Owned",        sub: "Since 2010" },
   ];
 
   return (
     <main className={styles.pageWrapper}>
 
-      {/* 1. Hero */}
       <WelcomePage />
 
-      {/* 2. Scrolling trust strip — immediately after hero */}
       <TrustBar
-        headline="Waco's trusted HVAC company — licensed, insured, and warrantied on every job"
+        headline="Waco's trusted solar company — NABCEP-aligned, insured, and warrantied on every install"
       />
 
-      {/* 3. Impact metrics — build credibility before pitching services */}
       <div className={styles.section}>
         <ImpactMetrics
           title="Numbers That Speak for Us"
@@ -228,27 +195,24 @@ export default function HomePage() {
         />
       </div>
 
-      {/* 4. Services grid */}
       <div className={styles.section}>
         <ServiceCardComponent
-          heading="Complete HVAC Services for Your Home"
+          heading="Complete Solar Services for Your Home & Business"
           cards={services}
         />
       </div>
 
-      {/* 5. Why Choose Us */}
       <div className={styles.section}>
         <WhyChooseUs
           cityName="Waco"
           features={whyFeatures}
-          title="What Makes Arctic Air Different"
+          title="What Makes SunPeak Solar Different"
         />
       </div>
 
-      {/* 14. Contact form — final conversion point */}
       <div className={styles.section}>
         <Variant4
-          title="Request Service or a Free Quote"
+          title="Request a Free Solar Design Consult"
           cityName="Waco"
           slug="/"
           spot="homepage-contact-form"
@@ -256,33 +220,27 @@ export default function HomePage() {
         />
       </div>
 
-      {/* 7. How it works — process after the CTA so urgency is set */}
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
       </div>
 
-      {/* 8. Social proof — reviews before the guarantee promise */}
       <div className={styles.section}>
         <Testimonials testimonials={reviews} />
       </div>
 
-      {/* 9. Guarantee — peer validation already done, now make the promise */}
       <div className={styles.section}>
         <GuaranteeSection />
       </div>
 
-      {/* 6. Mid-page CTA — emergency hook before process details */}
       <CTABanner
-        headline="AC Out or Heat Down? Call Us Right Now."
-        subline="Same-day and emergency service across Waco, Hewitt, Woodway, Robinson, and all of Central Texas. Flat-rate pricing. 1-year warranty."
-        primaryText="Call (254) 900-1234"
-        primaryLink="tel:+12549001234"
+        headline="Ready to Cut Your Electric Bill With Solar?"
+        subline="Free design consults across Waco, Hewitt, Woodway, Temple, and all of Central Texas. Transparent proposals. 25-Year Panel Performance Support + 10-Year Workmanship."
+        primaryText="Call (254) 810-1010"
+        primaryLink="tel:+12548101010"
         secondaryText="Book Online"
         secondaryLink="/contact"
       />
 
-
-      {/* 10. Service areas */}
       <div className={styles.section}>
         <LocalServiceAreas
           cityName="Waco"
@@ -292,24 +250,21 @@ export default function HomePage() {
         />
       </div>
 
-      {/* 11. What to expect (detail reassurance — lower in page) */}
       <div className={styles.section}>
         <WhatToExpect
-          sectionTitle="Every Service Call, Every Time"
+          sectionTitle="Every Project, Every Time"
           expectations={expectations}
         />
       </div>
 
-      {/* 12. FAQ */}
       <div className={styles.section}>
         <FAQ
           cityName="Waco"
           faq={faq}
-          title="HVAC Questions — Answered Straight"
+          title="Solar Questions — Answered Straight"
         />
       </div>
 
-      {/* 13. Blog preview — educational content before the final form */}
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>

@@ -3,7 +3,7 @@
 //  - Loading spinner while saving (replaces broken "Saving…" text)
 //  - Success flash (green check) on save
 //  - Error toast on failure
-//  - "Converted" → opens inline deal-value input panel
+//  - "Converted" → opens inline deal-value input door system
 //  - Pill shows correct color immediately (optimistic UI)
 'use client';
 import { useState, useRef, useEffect } from 'react';
@@ -12,7 +12,7 @@ const STATUSES = ['new', 'contacted', 'qualified', 'converted', 'lost'] as const
 type Status = typeof STATUSES[number];
 
 const STATUS_COLORS: Record<Status, string> = {
-  new:       '#f97316',
+  new:       '#eab308',
   contacted: '#378add',
   qualified: '#27ef27',
   converted: '#5dcaa5',
@@ -44,7 +44,7 @@ export default function LeadStatusSelect({
 }: Props) {
   const [status,    setStatus]    = useState<Status>((initialStatus as Status) ?? 'new');
   const [saveState, setSaveState] = useState<SaveState>('idle');
-  // Converted value panel
+  // Converted value door system
   const [showValue, setShowValue] = useState((initialStatus as Status) === 'converted');
   const [dealValue, setDealValue] = useState<string>(initialValue != null ? String(initialValue) : '');
   const [valSaving, setValSaving] = useState(false);
@@ -148,7 +148,7 @@ export default function LeadStatusSelect({
             width:        '14px',
             height:       '14px',
             border:       '2px solid rgba(255,255,255,0.15)',
-            borderTopColor: '#f97316',
+            borderTopColor: '#eab308',
             borderRadius: '50%',
             animation:    'spin 0.65s linear infinite',
             flexShrink:   0,
@@ -172,7 +172,7 @@ export default function LeadStatusSelect({
         )}
       </div>
 
-      {/* Deal value panel — shown when status is "converted" */}
+      {/* Deal value door system — shown when status is "converted" */}
       {showValue && (
         <div style={{
           display:       'flex',
