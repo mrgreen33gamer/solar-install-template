@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Residential Solar",
       body: "Custom rooftop and ground-mount systems designed for Central Texas sun, roof type, and your monthly usage — from design through interconnection.",
       link: "/services/residential-solar",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faIndustry,
       title: "Commercial Solar",
       body: "Warehouse, retail, and office arrays that cut demand charges and lock in long-term energy costs for your business.",
       link: "/services/commercial-solar",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faBatteryFull,
       title: "Battery Storage",
       body: "Home and light-commercial batteries sized for outages, self-consumption, and evening rate savings — with app monitoring included.",
       link: "/services/battery-storage",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faCarBattery,
       title: "EV Charger + Solar",
       body: "Level 2 chargers integrated with your solar design so you drive on sunshine, not peak utility rates.",
       link: "/services/ev-charger-solar",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faChartLine,
       title: "System Monitoring",
       body: "Production tracking, proactive alerts, and performance reports so you know your array is earning every day.",
       link: "/services/system-monitoring",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faTools,
       title: "Solar Maintenance",
       body: "Panel cleaning, inverter checks, and repair for systems we installed — or systems orphaned by another company.",
       link: "/services/solar-maintenance",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -180,13 +186,10 @@ export default function HomePage() {
 
   return (
     <main className={styles.pageWrapper}>
-
       <WelcomePage />
-
       <TrustBar
         headline="Waco's trusted solar company — NABCEP-aligned, insured, and warrantied on every install"
       />
-
       <div className={styles.section}>
         <ImpactMetrics
           title="Numbers That Speak for Us"
@@ -194,14 +197,15 @@ export default function HomePage() {
           cityName="Waco"
         />
       </div>
-
       <div className={styles.section}>
         <ServiceCardComponent
           heading="Complete Solar Services for Your Home & Business"
           cards={services}
         />
       </div>
-
+      <div className={styles.section}>
+        <ProcessTimeline steps={processSteps} />
+      </div>
       <div className={styles.section}>
         <WhyChooseUs
           cityName="Waco"
@@ -209,7 +213,46 @@ export default function HomePage() {
           title="What Makes SunPeak Solar Different"
         />
       </div>
-
+      <CTABanner
+        headline="Power You Produce Yourself."
+        subline="Residential solar design, install, and monitoring setup — clear production estimates, no mystery fees."
+        primaryText="Call (254) 810-1010"
+        primaryLink="tel:+12548101010"
+        secondaryText="See Savings Estimate"
+        secondaryLink="/contact"
+      
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+       />
+      <div className={styles.section}>
+        <Testimonials testimonials={reviews} />
+      </div>
+      <div className={styles.section}>
+        <GuaranteeSection />
+      </div>
+      <div className={styles.section}>
+        <LocalServiceAreas
+          cityName="Waco"
+          areas={localAreas}
+          servicePath=""
+          title="Serving All of Central Texas"
+        />
+      </div>
+      <div className={styles.section}>
+        <WhatToExpect
+          sectionTitle="Every Project, Every Time"
+          expectations={expectations}
+        />
+      </div>
+      <div className={styles.section}>
+        <FAQ
+          cityName="Waco"
+          faq={faq}
+          title="Solar Questions — Answered Straight"
+        />
+      </div>
+      <div className={styles.section}>
+        <BlogPreviewGrid />
+      </div>
       <div className={styles.section}>
         <Variant4
           title="Request a Free Solar Design Consult"
@@ -219,56 +262,6 @@ export default function HomePage() {
           formVariant={2}
         />
       </div>
-
-      <div className={styles.section}>
-        <ProcessTimeline steps={processSteps} />
-      </div>
-
-      <div className={styles.section}>
-        <Testimonials testimonials={reviews} />
-      </div>
-
-      <div className={styles.section}>
-        <GuaranteeSection />
-      </div>
-
-      <CTABanner
-        headline="Ready to Cut Your Electric Bill With Solar?"
-        subline="Free design consults across Waco, Hewitt, Woodway, Temple, and all of Central Texas. Transparent proposals. 25-Year Panel Performance Support + 10-Year Workmanship."
-        primaryText="Call (254) 810-1010"
-        primaryLink="tel:+12548101010"
-        secondaryText="Book Online"
-        secondaryLink="/contact"
-      />
-
-      <div className={styles.section}>
-        <LocalServiceAreas
-          cityName="Waco"
-          areas={localAreas}
-          servicePath=""
-          title="Serving All of Central Texas"
-        />
-      </div>
-
-      <div className={styles.section}>
-        <WhatToExpect
-          sectionTitle="Every Project, Every Time"
-          expectations={expectations}
-        />
-      </div>
-
-      <div className={styles.section}>
-        <FAQ
-          cityName="Waco"
-          faq={faq}
-          title="Solar Questions — Answered Straight"
-        />
-      </div>
-
-      <div className={styles.section}>
-        <BlogPreviewGrid />
-      </div>
-
     </main>
   );
 }

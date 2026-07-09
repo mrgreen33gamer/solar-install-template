@@ -19,7 +19,7 @@
 //   The actual safe-area padding rules live in globals.css, applied to
 //   <header>, <footer>, and <body>. See that file for the full breakdown.
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, ABeeZee } from "next/font/google";
+import { Saira_Stencil_One, Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import "./globalVariables.scss";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -43,20 +43,27 @@ import reviews from "../../libs/local-db/reviews";
 
 config.autoAddCss = false;
 
-// ── FONTS ─────────────────────────────────────────────────────────────────────
-const barlowCondensed = Barlow_Condensed({
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-barlow-condensed",
-});
-
-const aBeeZee = ABeeZee({
+// ── FONTS — uniqueness
+const fontTitle = Saira_Stencil_One({
   weight: ["400"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-abeezee",
+  variable: "--font-title",
 });
+
+const fontHeader = Manrope({
+  weight: ["400","500","600","700","800"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-header",
+});
+
+const fontBody = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
@@ -76,8 +83,8 @@ export const viewport: Viewport = {
   // applied to <body> in globals.css. Adjust if you want a lighter Safari
   // chrome tint for light-mode users.
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0d1b2a" },
-    { media: "(prefers-color-scheme: dark)",  color: "#0d1b2a" },
+    { media: "(prefers-color-scheme: light)", color: "#0c1a2e" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0c1a2e" },
   ],
   colorScheme: "dark",
 };
@@ -243,7 +250,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${aBeeZee.variable}`}
+      className={`${fontTitle.variable} ${fontHeader.variable} ${fontBody.variable}`}
     >
       <head>
         <script
@@ -257,7 +264,7 @@ export default function RootLayout({
           <Header />
         </ConditionalShell>
 
-        <NextTopLoader color="#eab308" showSpinner={false} />
+        <NextTopLoader color="#facc15" showSpinner={false} />
 
         <Suspense fallback={null}>
           <Analytics />
@@ -273,10 +280,10 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#0d1b2a",
+                  background: "#0c1a2e",
                 }}
               >
-                <PulseLoader size={50} color="#eab308" />
+                <PulseLoader size={50} color="#facc15" />
               </div>
             }
           >

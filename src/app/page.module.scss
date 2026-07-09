@@ -31,3 +31,13 @@
     margin-bottom: 2rem;
   }
 }
+
+/* === UNIQUENESS IDENTITY LAYER — solar-install-template === */
+.pageWrapper {
+  /* brand page rhythm */
+}
+.section {
+  padding-top: clamp(5.7rem, 6vw, 7.7rem) !important;
+  padding-bottom: clamp(5.7rem, 6vw, 7.7rem) !important;
+}
+/* end identity layer */

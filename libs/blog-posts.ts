@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Savings',
     date:     'July 3, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageSrc: '/pages/home/welcome/after.jpg',
     imageAlt: 'Solar payback guide for Central Texas homeowners',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Storage',
     date:     'June 24, 2026',
     readTime: 6,
-    imageSrc: '/pages/blogs/heat-pump.jpg',
+    imageSrc: '/pages/home/services/service-1.jpg',
     imageAlt: 'Home battery backup worth it in Texas guide',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date:     'June 15, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'How to choose a solar installer in Waco TX',
   },
 ];

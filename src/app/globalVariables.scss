@@ -1,44 +1,30 @@
-// src/app/globalVariables.scss
-// ─────────────────────────────────────────────────────────────────────────────
-// SunPeak Solar — Brand Tokens
-//
-// THREE DISTINCT FONTS:
-//   $titleFont  → Barlow Condensed  — bold condensed display (hero h1, section titles)
-//   $headerFont → Outfit            — clean geometric sans   (nav, card titles, labels, CTAs)
-//   $textFont   → Inter             — refined humanist sans  (body copy, form text, paragraphs)
-//
-// Usage guide:
-//   h1, .hero headline              → $titleFont  (uppercase, tight tracking)
-//   h2, h3, nav links, btn text     → $headerFont (medium weight, normal case)
-//   p, label, input, small text     → $textFont   (regular/medium weight)
-// ─────────────────────────────────────────────────────────────────────────────
+// Auto uniqueness tokens — clean energy future
+$titleFont:  var(--font-title),  'Saira Stencil One', sans-serif;
+$headerFont: var(--font-header), 'Manrope', sans-serif;
+$textFont:   var(--font-body),   'Inter', sans-serif;
 
-$titleFont:  var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-$headerFont: var(--font-outfit),           'Outfit',           sans-serif;
-$textFont:   var(--font-inter),            'Inter',            sans-serif;
-
-// ── Core Palette ─────────────────────────────────────────────────────────────
 $black:      #000000;
-$obsidian:   #0d1b2a;
-$blackflat:  #1a2a3a;
+$obsidian:   #0c1a2e;
+$blackflat:  #0c1a2e;
 $white:      #FFFFFF;
-$offwhite:   #f8fafc;
+$offwhite:   #fefce8;
 
-// Greys (navy-tinted)
-$darkgrey:   #7a9bb5;
-$grey:       #4a6a85;
-$lightgrey:  #c8d8e8;
+$darkgrey:   #94a3b8;
+$grey:       #64748b;
+$lightgrey:  #e2e8f0;
 
-// Brand Accent — sun yellow / gold
-$orange:     #eab308;
-$lightorange:#facc15;
-$darkorange: #a16207;
+$orange:     #facc15;
+$lightorange:#fde047;
+$darkorange: #ca8a04;
 
-// Legacy aliases
 $green:      $orange;
 $lightgreen: $lightorange;
 $darkgreen:  $darkorange;
-$blue:       #1e6fa8;
+$blue:       #facc15;
 
-// Error
+$radius-sm:  6px;
+$radius-md:  10px;
+$radius-lg:  14px;
+$radius-pill: 8px;
+
 $danger-red: #ef4444;
