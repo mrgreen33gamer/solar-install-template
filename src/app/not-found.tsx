@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation, faHouse, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
-import Header from "#/GeneralComponents/Header/Header";
 import styles from './not-found.module.scss';
 
 const NotFoundPage: React.FC = () => {
@@ -79,9 +78,9 @@ const NotFoundPage: React.FC = () => {
               Contact Us
             </Link>
             <Link 
-              href="https://www.facebook.com/scottapplications" 
+              href="https://www.facebook.com/sunpeaksolar" 
               target="_blank" 
-              rel="noopener noreferrer"
+              rel="noEV charger noreferrer"
               className={styles.ctaButton}
             >
               <FontAwesomeIcon icon={faFacebookF} className={styles.buttonIcon} />
