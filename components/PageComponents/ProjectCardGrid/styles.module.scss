@@ -806,7 +806,7 @@
   overflow-y: auto;
 }
 
-.modalPanel {
+.modalDoor System {
   position: relative;
   background: $white;
   border-radius: 28px;
@@ -1069,7 +1069,7 @@
 
 // ─── Responsive ───────────────────────────────────────────────────────────────
 @media (max-width: 640px) {
-  .modalPanel { border-radius: 20px; }
+  .modalDoor System { border-radius: 20px; }
   .carousel { height: 220px; }
   .modalContent { padding: 1.5rem; }
   .modalTitle { font-size: 1.6rem; }

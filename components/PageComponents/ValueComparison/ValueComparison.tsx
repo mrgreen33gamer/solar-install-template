@@ -14,14 +14,14 @@ interface ValueComparisonProps {
 }
 
 const DEFAULT_ROWS: ComparisonRow[] = [
-  { feature: 'Flat-rate pricing (no hourly billing)',  us: true,  others: false },
-  { feature: '1-Year parts & labor warranty',          us: true,  others: false },
-  { feature: 'Same-day emergency service',             us: true,  others: 'Sometimes' },
-  { feature: 'No service contracts required',          us: true,  others: false },
-  { feature: 'Licensed & insured technicians',         us: true,  others: true },
-  { feature: 'Upfront quote before work begins',       us: true,  others: false },
-  { feature: 'All major brands serviced',              us: true,  others: 'Sometimes' },
-  { feature: 'Satisfaction guarantee',                 us: true,  others: false },
+  { feature: 'Transparent written proposals',          us: true,  others: false },
+  { feature: '25-Year panel performance support',      us: true,  others: 'Sometimes' },
+  { feature: '10-Year workmanship warranty',           us: true,  others: false },
+  { feature: 'No high-pressure sales tactics',         us: true,  others: false },
+  { feature: 'NABCEP-aligned installers',              us: true,  others: 'Sometimes' },
+  { feature: 'Local Waco ownership since 2016',        us: true,  others: false },
+  { feature: 'Battery & EV charger integration',       us: true,  others: 'Sometimes' },
+  { feature: 'Monitoring & long-term support',         us: true,  others: false },
 ];
 
 function StatusIcon({ value }: { value: boolean | string }) {
@@ -46,7 +46,7 @@ function StatusIcon({ value }: { value: boolean | string }) {
   return <span className={styles.iconMaybe}>{value}</span>;
 }
 
-export default function ValueComparison({ rows = DEFAULT_ROWS, title = 'Arctic Air vs. The Other Guys' }: ValueComparisonProps) {
+export default function ValueComparison({ rows = DEFAULT_ROWS, title = 'SunPeak Solar vs. The Other Guys' }: ValueComparisonProps) {
   return (
     <section className={styles.section} aria-label="Value comparison">
       <div className={styles.container}>
@@ -75,7 +75,7 @@ export default function ValueComparison({ rows = DEFAULT_ROWS, title = 'Arctic A
                 <polyline points="18 8 22 12 18 16"/>
               </svg>
             </span>
-            Arctic Air
+            SunPeak Solar
           </div>
           <div className={styles.colHeaderOthers}>Competitors</div>
         </div>

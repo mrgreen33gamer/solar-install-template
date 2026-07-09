@@ -71,9 +71,9 @@ const ScottAppsCTA: React.FC<ScottAppsCTAProps> = ({
 
             <div className={styles.ctaRow}>
               <Link
-                href="https://scottapps.com/invoicing"
+                href="https://sunpeaksolar.com/invoicing"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noEV charger noreferrer"
                 className={styles.btnPrimary}
               >
                 Try It Free
@@ -99,7 +99,7 @@ const ScottAppsCTA: React.FC<ScottAppsCTAProps> = ({
             <div className={styles.cardHeader}>
               <div className={styles.cardBrand}>
                 <FontAwesomeIcon icon={faFileInvoiceDollar} />
-                <span>scottapps.com</span>
+                <span>sunpeaksolar.com</span>
               </div>
               <div className={styles.cardBadge}>
                 <FontAwesomeIcon icon={faBolt} />

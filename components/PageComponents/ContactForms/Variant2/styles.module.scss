@@ -35,7 +35,7 @@
 }
 
 // ── LEFT PANEL ────────────────────────────────────────────────────────────────
-.leftPanel {
+.leftDoor System {
   background: linear-gradient(160deg, rgba($orange, 0.18) 0%, rgba($obsidian, 0.95) 60%);
   border-right: 1px solid rgba($orange, 0.15);
   padding: 2.5rem 2rem;
@@ -47,7 +47,7 @@
   }
 }
 
-.panelInner { display: flex; flex-direction: column; gap: 1.5rem; }
+.door systemInner { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .quoteIcon { color: $orange; opacity: 0.7; }
 
@@ -61,7 +61,7 @@
   letter-spacing: 0.08em; text-transform: uppercase; color: rgba($orange, 0.7);
 }
 
-.panelStats {
+.door systemStats {
   display: flex; gap: 1rem; flex-wrap: wrap;
   padding-top: 1rem;
   border-top: 1px solid rgba($white, 0.08);
@@ -79,9 +79,9 @@
   color: rgba($white, 0.38); text-transform: uppercase; letter-spacing: 0.06em;
 }
 
-.panelBadges { display: flex; flex-direction: column; gap: 0.55rem; }
+.door systemBadges { display: flex; flex-direction: column; gap: 0.55rem; }
 
-.panelBadge {
+.door systemBadge {
   display: flex; align-items: center; gap: 0.5rem;
   font-family: $textFont; font-size: 0.8rem; font-weight: 600;
   color: rgba($white, 0.65);
