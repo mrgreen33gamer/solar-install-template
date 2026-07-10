@@ -1,151 +1,108 @@
-// Solar Install Hero — Roof Plane with Panel Grid + Inverter Path
-// Trade-specific blueprint (not generic house). Draw-in + setTimeout safety.
+// SunPeak Welcome — unique "Array Production Console" (not blueprint / materials grid).
+// CSS roof array + live metrics + storage strip. Zero stock photos.
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-function BlueprintSchematic({ label }: { label: string }) {
-  const svgRef = useRef<SVGSVGElement>(null);
+const METRICS = [
+  { label: 'Live output', value: '6.8 kW', bar: 78 },
+  { label: 'Today', value: '31.2 kWh', bar: 64 },
+  { label: 'Offset', value: '94%', bar: 94 },
+  { label: 'Battery', value: '82%', bar: 82 },
+];
 
-  useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
-    const paths = Array.from(svg.querySelectorAll<SVGGeometryElement>('[data-draw]'));
+const MODULE_ROWS = 4;
+const MODULE_COLS = 5;
 
-    paths.forEach((el, i) => {
-      const length = typeof el.getTotalLength === 'function' ? el.getTotalLength() : 400;
-      el.style.strokeDasharray = `${length}`;
-      el.style.strokeDashoffset = `${length}`;
-      el.style.animation = `blueprintDraw 1.55s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
-      el.style.animationDelay = `${0.28 + i * 0.05}s`;
-      window.setTimeout(() => {
-        el.style.strokeDashoffset = '0';
-      }, 2200 + i * 40);
-    });
-  }, []);
-
+function ArrayProductionConsole() {
   return (
-    <div className={styles.schematicWrap} role="img" aria-label={label}>
-      <div className={styles.schematicGrid} aria-hidden="true" />
-      <div className={styles.rBadge} aria-hidden="true">
-        8.4 kW ARRAY
+    <div className={styles.prodConsole} aria-label="SunPeak array production console">
+      <div className={styles.consoleTop} aria-hidden="true">
+        <span className={styles.consoleLed} />
+        <span className={styles.consoleBrand}>SUNPEAK · SITE MONITOR</span>
+        <span className={styles.consoleChip}>8.4 kW</span>
       </div>
-      <svg
-        ref={svgRef}
-        className={styles.schematic}
-        viewBox="0 0 360 320"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        {/* Roof plane outline (isometric-ish trapezoid) */}
-        <path
-          data-draw
-          d="M48 200 L100 70 L300 70 L340 200 Z"
-          className={styles.traceMain}
-        />
-        {/* Ridge line */}
-        <line data-draw x1="100" y1="70" x2="300" y2="70" className={styles.traceAccent} />
-        {/* Hip / eave details */}
-        <line data-draw x1="48" y1="200" x2="340" y2="200" className={styles.traceDim} />
-        <line data-draw x1="174" y1="70" x2="194" y2="200" className={styles.traceDim} />
 
-        {/* Solar panel grid — left roof plane */}
-        <rect data-draw x="90" y="90" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="130" y="90" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="90" y="116" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="130" y="116" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="90" y="142" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="130" y="142" width="36" height="22" className={styles.traceAccent} />
+      <header className={styles.consoleHead}>
+        <div>
+          <p className={styles.consoleEyebrow}>Design proposal preview</p>
+          <h2 className={styles.consoleTitle}>Array Console</h2>
+        </div>
+        <div className={styles.consoleStatus}>
+          <span className={styles.statusPulse} />
+          Producing
+        </div>
+      </header>
 
-        {/* Solar panel grid — right roof plane */}
-        <rect data-draw x="210" y="90" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="250" y="90" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="210" y="116" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="250" y="116" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="210" y="142" width="36" height="22" className={styles.traceAccent} />
-        <rect data-draw x="250" y="142" width="36" height="22" className={styles.traceAccent} />
-
-        {/* Cell crosshairs on a few modules */}
-        <line data-draw x1="90" y1="101" x2="126" y2="101" className={styles.traceDim} />
-        <line data-draw x1="108" y1="90" x2="108" y2="112" className={styles.traceDim} />
-        <line data-draw x1="250" y1="127" x2="286" y2="127" className={styles.traceDim} />
-        <line data-draw x1="268" y1="116" x2="268" y2="138" className={styles.traceDim} />
-
-        {/* DC string home-run toward junction */}
-        <polyline
-          data-draw
-          points="148,153 148,175 190,175 190,200"
-          className={styles.traceMain}
-        />
-        <polyline
-          data-draw
-          points="228,153 228,168 190,168"
-          className={styles.traceMain}
-        />
-
-        {/* Conduit down wall to inverter */}
-        <line data-draw x1="190" y1="200" x2="190" y2="248" className={styles.traceMain} />
-        <rect data-draw x="168" y="248" width="44" height="32" rx="2" className={styles.traceAccent} />
-        {/* Inverter vents / label marks */}
-        <line data-draw x1="176" y1="258" x2="204" y2="258" className={styles.traceDim} />
-        <line data-draw x1="176" y1="266" x2="204" y2="266" className={styles.traceDim} />
-
-        {/* AC run to main panel */}
-        <polyline
-          data-draw
-          points="212,264 250,264 250,248 290,248"
-          className={styles.traceMain}
-        />
-        <rect data-draw x="290" y="232" width="32" height="36" className={styles.traceMain} />
-        <line data-draw x1="296" y1="240" x2="316" y2="240" className={styles.traceDim} />
-        <line data-draw x1="296" y1="248" x2="316" y2="248" className={styles.traceDim} />
-        <line data-draw x1="296" y1="256" x2="310" y2="256" className={styles.traceAccent} />
-
-        {/* Utility meter / disconnect */}
-        <circle data-draw cx="306" cy="210" r="12" className={styles.traceDim} />
-        <line data-draw x1="306" y1="198" x2="306" y2="222" className={styles.traceDim} />
-        <line data-draw x1="306" y1="222" x2="306" y2="232" className={styles.traceAccent} />
-
-        {/* Sun vector arrows (production metaphor) */}
-        <path data-draw d="M200 28 L200 52" className={styles.traceAccent} />
-        <path data-draw d="M192 42 L200 52 L208 42" className={styles.traceAccent} />
-        <path data-draw d="M165 34 L175 48" className={styles.traceDim} />
-        <path data-draw d="M235 34 L225 48" className={styles.traceDim} />
-
-        {/* Ground mount hint (optional pad) */}
-        <rect data-draw x="48" y="248" width="50" height="28" className={styles.traceDim} />
-        <line data-draw x1="56" y1="256" x2="90" y2="256" className={styles.traceDim} />
-        <line data-draw x1="56" y1="264" x2="90" y2="264" className={styles.traceDim} />
-
-        {/* Nodes */}
-        <circle cx="148" cy="153" r="3" className={styles.node} />
-        <circle cx="228" cy="153" r="3" className={styles.node} />
-        <circle cx="190" cy="200" r="3.5" className={styles.nodeAccent} />
-        <circle cx="190" cy="264" r="3.5" className={styles.nodeAccent} />
-        <circle cx="306" cy="250" r="3" className={styles.node} />
-        <circle cx="200" cy="28" r="3.5" className={styles.nodeAccent} />
-        <circle cx="108" cy="101" r="2.5" className={styles.node} />
-        <circle cx="268" cy="127" r="2.5" className={styles.node} />
-      </svg>
-      <div className={styles.schematicCaption} aria-hidden="true">
-        <span className={styles.captionDot} />
-        ROOF ARRAY
+      {/* Isometric-ish roof with CSS modules */}
+      <div className={styles.arrayStage} aria-hidden="true">
+        <div className={styles.sunBurst} />
+        <div className={styles.roofDeck}>
+          <div className={styles.roofRidge} />
+          <div className={styles.moduleGrid}>
+            {Array.from({ length: MODULE_ROWS * MODULE_COLS }).map((_, i) => (
+              <motion.span
+                key={i}
+                className={styles.module}
+                initial={{ opacity: 0.35 }}
+                animate={{ opacity: [0.55, 1, 0.7, 1] }}
+                transition={{
+                  duration: 2.8,
+                  delay: 0.4 + (i % MODULE_COLS) * 0.08 + Math.floor(i / MODULE_COLS) * 0.05,
+                  repeat: Infinity,
+                  repeatDelay: 1.2,
+                }}
+              />
+            ))}
+          </div>
+          <div className={styles.inverterBox}>
+            <span>INV</span>
+          </div>
+          <div className={styles.batteryBox}>
+            <span className={styles.battFill} />
+            <em>BAT</em>
+          </div>
+        </div>
+        <div className={styles.arrayMeta}>
+          <span>20 modules · south plane</span>
+          <span>Enphase-ready path</span>
+        </div>
       </div>
-      <div className={styles.layerLegend} aria-hidden="true">
-        <span>
-          <i className={styles.legBatt} /> Modules
-        </span>
-        <span>
-          <i className={styles.legFoam} /> DC / AC path
-        </span>
-        <span>
-          <i className={styles.legAir} /> Inverter
-        </span>
-      </div>
+
+      <ul className={styles.metricList} role="list">
+        {METRICS.map((m, i) => (
+          <motion.li
+            key={m.label}
+            className={styles.metricRow}
+            role="listitem"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.35 + i * 0.07 }}
+          >
+            <div className={styles.metricLabelRow}>
+              <span className={styles.metricLabel}>{m.label}</span>
+              <span className={styles.metricValue}>{m.value}</span>
+            </div>
+            <div className={styles.metricTrack}>
+              <motion.div
+                className={styles.metricFill}
+                initial={{ width: 0 }}
+                animate={{ width: `${m.bar}%` }}
+                transition={{ duration: 0.9, delay: 0.5 + i * 0.08, ease: 'easeOut' }}
+              />
+            </div>
+          </motion.li>
+        ))}
+      </ul>
+
+      <footer className={styles.consoleFoot} aria-hidden="true">
+        <span>25-yr panel support</span>
+        <span className={styles.consoleRule} />
+        <span>NABCEP-aligned crews</span>
+      </footer>
     </div>
   );
 }
@@ -165,7 +122,6 @@ export default function WelcomePage() {
     'Since 2016',
     '25-Year Panel Support',
   ];
-  const schematicLabel = 'SunPeak schematic';
 
   return (
     <section className={styles.hero} aria-label="Hero">
@@ -241,7 +197,7 @@ export default function WelcomePage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
         >
-          <BlueprintSchematic label={schematicLabel} />
+          <ArrayProductionConsole />
         </motion.div>
       </div>
     </section>
