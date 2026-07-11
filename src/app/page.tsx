@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "System Monitoring",
       body: "Production tracking, proactive alerts, and performance reports so you know your array is earning every day.",
       link: "/services/system-monitoring",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faTools,
       title: "Solar Maintenance",
       body: "Panel cleaning, inverter checks, and repair for systems we installed — or systems orphaned by another company.",
       link: "/services/solar-maintenance",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 

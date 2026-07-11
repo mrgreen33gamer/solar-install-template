@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     siteName: "SunPeak Solar",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 1200,
         height: 630,
         alt: "SunPeak Solar — Waco TX Residential & Commercial Solar Installation",
@@ -138,7 +138,7 @@ export const metadata: Metadata = {
     title: "SunPeak Solar | Waco TX Solar Installation",
     description:
       "Residential & commercial solar, battery storage & EV charging for Central Texas. NABCEP-aligned & insured — 25-year panel performance support.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,
