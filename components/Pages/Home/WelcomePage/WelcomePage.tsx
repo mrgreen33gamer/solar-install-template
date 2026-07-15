@@ -1,113 +1,27 @@
-// SunPeak Welcome — unique "Array Production Console" (not blueprint / materials grid).
-// CSS roof array + live metrics + storage strip. Zero stock photos.
+// SunPeak Welcome — photographic parallax hero.
+// Real rooftop-solar scene scrolls behind a navy scrim; an authentic installer
+// photo card (badge + spec card) replaces the CSS "Array Production Console".
+// Photos live in /public/pages/home/welcome (hero-scene.jpg, hero-installer.jpg).
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-const METRICS = [
-  { label: 'Live output', value: '6.8 kW', bar: 78 },
-  { label: 'Today', value: '31.2 kWh', bar: 64 },
-  { label: 'Offset', value: '94%', bar: 94 },
-  { label: 'Battery', value: '82%', bar: 82 },
-];
-
-const MODULE_ROWS = 4;
-const MODULE_COLS = 5;
-
-function ArrayProductionConsole() {
-  return (
-    <div className={styles.prodConsole} aria-label="SunPeak array production console">
-      <div className={styles.consoleTop} aria-hidden="true">
-        <span className={styles.consoleLed} />
-        <span className={styles.consoleBrand}>SUNPEAK · SITE MONITOR</span>
-        <span className={styles.consoleChip}>8.4 kW</span>
-      </div>
-
-      <header className={styles.consoleHead}>
-        <div>
-          <p className={styles.consoleEyebrow}>Design proposal preview</p>
-          <h2 className={styles.consoleTitle}>Array Console</h2>
-        </div>
-        <div className={styles.consoleStatus}>
-          <span className={styles.statusPulse} />
-          Producing
-        </div>
-      </header>
-
-      {/* Isometric-ish roof with CSS modules */}
-      <div className={styles.arrayStage} aria-hidden="true">
-        <div className={styles.sunBurst} />
-        <div className={styles.roofDeck}>
-          <div className={styles.roofRidge} />
-          <div className={styles.moduleGrid}>
-            {Array.from({ length: MODULE_ROWS * MODULE_COLS }).map((_, i) => (
-              <motion.span
-                key={i}
-                className={styles.module}
-                initial={{ opacity: 0.35 }}
-                animate={{ opacity: [0.55, 1, 0.7, 1] }}
-                transition={{
-                  duration: 2.8,
-                  delay: 0.4 + (i % MODULE_COLS) * 0.08 + Math.floor(i / MODULE_COLS) * 0.05,
-                  repeat: Infinity,
-                  repeatDelay: 1.2,
-                }}
-              />
-            ))}
-          </div>
-          <div className={styles.inverterBox}>
-            <span>INV</span>
-          </div>
-          <div className={styles.batteryBox}>
-            <span className={styles.battFill} />
-            <em>BAT</em>
-          </div>
-        </div>
-        <div className={styles.arrayMeta}>
-          <span>20 modules · south plane</span>
-          <span>Enphase-ready path</span>
-        </div>
-      </div>
-
-      <ul className={styles.metricList} role="list">
-        {METRICS.map((m, i) => (
-          <motion.li
-            key={m.label}
-            className={styles.metricRow}
-            role="listitem"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.35 + i * 0.07 }}
-          >
-            <div className={styles.metricLabelRow}>
-              <span className={styles.metricLabel}>{m.label}</span>
-              <span className={styles.metricValue}>{m.value}</span>
-            </div>
-            <div className={styles.metricTrack}>
-              <motion.div
-                className={styles.metricFill}
-                initial={{ width: 0 }}
-                animate={{ width: `${m.bar}%` }}
-                transition={{ duration: 0.9, delay: 0.5 + i * 0.08, ease: 'easeOut' }}
-              />
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-
-      <footer className={styles.consoleFoot} aria-hidden="true">
-        <span>25-yr panel support</span>
-        <span className={styles.consoleRule} />
-        <span>NABCEP-aligned crews</span>
-      </footer>
-    </div>
-  );
-}
-
 export default function WelcomePage() {
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '16%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, reduceMotion ? 1.08 : 1.16]);
+
   const badgeText = "Waco's Trusted Solar Installer — Since 2016";
   const headlineLines = ['Power Your Home.', 'Cut Your Bill.'];
   const headlineAccent = 'SunPeak Solar.';
@@ -124,8 +38,24 @@ export default function WelcomePage() {
   ];
 
   return (
-    <section className={styles.hero} aria-label="Hero">
-      <div className={styles.shard} aria-hidden="true" />
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — residential rooftop solar scene */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-scene.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Navy scrim keeps the headline legible and the photo on-brand */}
+      <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.layout}>
         <div className={styles.content}>
@@ -191,13 +121,38 @@ export default function WelcomePage() {
           </motion.div>
         </div>
 
+        {/* Authentic installer photo — the ownable image, framed as a spec card */}
         <motion.div
           className={styles.visual}
           initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
         >
-          <ArrayProductionConsole />
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/hero-installer.jpg"
+              alt="Solar installer in safety glasses mounting a photovoltaic panel on a residential roof in the Waco area"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 440px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              NABCEP-Aligned Crew · On-Site
+            </div>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 25-Yr panel performance support
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 10-Yr workmanship warranty
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
